@@ -1,0 +1,12 @@
+<div cdkDropListGroup id="lists"> 
+    <app-lists-read></app-lists-read>
+
+    <div class="example-container">
+        <h2>To Do</h2>
+
+        <div cdkDropList [cdkDropListData]="todo" class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+        </div>
+    </div>
+
+</div>

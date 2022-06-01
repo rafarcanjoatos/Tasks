@@ -1,0 +1,44 @@
+.spacer {
+    flex: 1;
+}
+
+.toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #060054;
+}
+
+.toolbar #github-logo {
+    height: 25px;
+    margin: 20px;
+    fill: white;
+}
+.toolbar #github-logo:hover {
+    opacity: 0.8;
+}
+
+.toolbar #title-top-bar {    
+    height: 30px;
+    margin: 20px;
+    color: white;
+    font-weight: 700;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 20px;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+svg.material-icons {
+    height: 40px;
+    width: auto;
+}
+
+svg.material-icons:not(:last-child) {
+    margin-right: 15px;
+}
