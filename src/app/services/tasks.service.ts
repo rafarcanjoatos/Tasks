@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Lists } from '../lists/lists';
+import { Tasks } from '../tasks/tasks';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Observable, EMPTY } from "rxjs";
@@ -9,9 +9,9 @@ import { map, catchError } from "rxjs/operators";
 @Injectable({
   providedIn: 'root'
 })
-export class ListsService {
+export class TasksService {
 
-  baseUrl = 'http://localhost:3000/lists';
+  baseUrl = 'http://localhost:3000/tasks';
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) {}
 
@@ -24,36 +24,36 @@ export class ListsService {
     });
   }
 
-  create(lists: Lists): Observable<Lists> {
-    return this.http.post<Lists>(this.baseUrl, lists).pipe(
+  create(tasks: Tasks): Observable<Tasks> {
+    return this.http.post<Tasks>(this.baseUrl, tasks).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
     );
   }
 
-  getLists(): Observable<Lists[]> {
-    return this.http.get<Lists[]>(this.baseUrl);
+  getTasks(): Observable<Tasks[]> {
+    return this.http.get<Tasks[]>(this.baseUrl);
   }
 
-  getById(id: number): Observable<Lists> {
-    const url = `${this.baseUrl}/lists/${id}`;
-    return this.http.get<Lists>(url).pipe(
+  getById(id: number): Observable<Tasks> {
+    const url = `${this.baseUrl}/tasks/${id}`;
+    return this.http.get<Tasks>(url).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
     );
   }
 
-  update(lists: Lists): Observable<Lists> {
-    const url = `${this.baseUrl}/lists/${lists.id}`;
-    return this.http.put<Lists>(url, lists).pipe(
+  update(tasks: Tasks): Observable<Tasks> {
+    const url = `${this.baseUrl}/tasks/${tasks.id}`;
+    return this.http.put<Tasks>(url, tasks).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
     );
   }
 
-  delete(id: number): Observable<Lists> {
-    const url = `${this.baseUrl}/lists/${id}`;
-    return this.http.delete<Lists>(url).pipe(
+  delete(id: number): Observable<Tasks> {
+    const url = `${this.baseUrl}/tasks/${id}`;
+    return this.http.delete<Tasks>(url).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
     );

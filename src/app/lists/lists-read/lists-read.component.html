@@ -1,0 +1,12 @@
+<div cdkDropList [cdkDropListData]="lists" class="container" (cdkDropListDropped)="drop($event)">
+    <div class="task-box" *ngFor="let name of lists" cdkDrag>   
+        <div class="border-box">
+        <div class="title-box">
+            <span>{{name.title}}</span>
+            <div cdkDropList [cdkDropListData]="todo" (cdkDropListDropped)="drop($event)">
+                <div class="item-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
