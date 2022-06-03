@@ -1,9 +1,7 @@
 import { ListsService } from '../../services/lists.service';
+import { TasksService } from '../../services/tasks.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
-import { Lists } from './../lists';
-import { TasksReadComponent } from '../../tasks/tasks-read/tasks-read.component';
-import { Tasks } from 'src/app/tasks/tasks';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-lists-read',
@@ -13,11 +11,14 @@ import { Tasks } from 'src/app/tasks/tasks';
 
 export class ListsReadComponent {
   lists : any;
-  displayedColumns = ['id','title'];
+  listsColumns = ['id','title'];
+  tasks : any;
+  tasksColumns = ['id','listId','title'];
+
   todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
 
-  constructor(private listsService: ListsService) { }
-
+  constructor(private listsService: ListsService, private tasksService: TasksService) { }
+  
   ngOnInit(): void {
     try{
       this.listsService.getLists().subscribe((lists) => {
@@ -29,8 +30,31 @@ export class ListsReadComponent {
     catch (exception){
         console.log("Erro ao importar Listas");
     }
-  }  
-  
+    
+    try{
+      this.tasksService.getTasks().subscribe((tasks) => {
+        this.tasks = tasks;
+        console.log(tasks);
+        return this.tasks;
+      });
+    }
+    catch (exception){
+        console.log("Erro ao importar Tarefas");
+    }
+
+    try{
+      for (let i in this.lists){
+        if(this.tasks.listId[i] == this.lists.id[i]){
+          this.lists.id[i] = this.tasks[i];
+        }
+      }
+
+    }
+    catch(exception){
+      console.log("Erro ao afiliar Tarefas");
+    }
+  }   
+
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -44,5 +68,3 @@ export class ListsReadComponent {
     }
   }
 }
-
-

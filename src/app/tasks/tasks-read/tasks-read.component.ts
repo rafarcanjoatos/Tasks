@@ -1,7 +1,5 @@
 import { TasksService } from '../../services/tasks.service';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
-import { Tasks } from './../tasks';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-tasks-read',
@@ -9,11 +7,11 @@ import { Tasks } from './../tasks';
   styleUrls: ['./tasks-read.component.css']
 })
 
-export class TasksReadComponent {
-  tasks : any;
+export class TasksReadComponent  implements OnInit{
+  @Input() tasks : any;
   displayedColumns = ['id','listId','title'];
 
-  constructor(private tasksService: TasksService) { }
+  constructor(private tasksService: TasksService) { }  
 
   ngOnInit(): void {
     try{
@@ -24,7 +22,7 @@ export class TasksReadComponent {
       });
     }
     catch (exception){
-        console.log("Erro ao importar Listas");
+        console.log("Erro ao importar Tarefas");
     }
   }    
 }
