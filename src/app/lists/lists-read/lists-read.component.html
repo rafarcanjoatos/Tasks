@@ -5,7 +5,7 @@
             <span>{{name.title}} - {{name.id}}</span>
             <div cdkDropList [cdkDropListData]="tasks" (cdkDropListDropped)="drop($event)">
                 <div *ngFor="let item of tasks" cdkDrag>
-                    <div class="item-box" *ngIf="item.listId == i">
+                    <div class="item-box" *ngIf="item.listId == name.id">
                         {{item.title}}
                     </div>
                 </div>
