@@ -11,19 +11,19 @@ import { Component } from '@angular/core';
 
 export class ListsReadComponent {
   lists : any;
+  listsColumns = ['id','title'];
   tasks : any;
-   
+  tasksColumns = ['id','listId','title'];
+
   todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
 
   constructor(private listsService: ListsService, private tasksService: TasksService) { }
-
+  
   ngOnInit(): void {
-
-    // Get Lists
     try{
       this.listsService.getLists().subscribe((lists) => {
         this.lists = lists;
-        //console.log(lists);
+        console.log(lists);
         return this.lists;
       });
     }
@@ -31,38 +31,10 @@ export class ListsReadComponent {
         console.log("Erro ao importar Listas");
     }
     
-    // Get Tasks
     try{
       this.tasksService.getTasks().subscribe((tasks) => {
         this.tasks = tasks;
-        //console.log(tasks);
-
-        // // Afilliate Tasks in Lists
-        // try{    
-        //   for (let i in this.tasks){            
-        //     console.log("----- Entrou no Contador");
-        //     for (let idTask of this.tasks){
-        //       console.log("---------- Entrou no For");
-        //       //console.log(i);
-        //       //console.log(idTask.listId);
-
-        //       if(i == idTask.listId){
-        //         console.log("--------------- Entrou no if");
-        //         console.log(idTask.title);
-        //         console.log(this.lists[i]);
-
-        //         this.lists[i].concat(idTask);
-        //         console.log(this.lists[i]);
-        //         // console.log("4 - Afiliou");
-        //       }
-
-        //       }
-        //   }
-        // }
-        // catch(exception){
-        //   console.log("Erro ao afiliar Tarefas");
-        // }  
-
+        console.log(tasks);
         return this.tasks;
       });
     }
@@ -70,7 +42,17 @@ export class ListsReadComponent {
         console.log("Erro ao importar Tarefas");
     }
 
-    
+    try{
+      for (let i in this.lists){
+        if(this.tasks.listId[i] == this.lists.id[i]){
+          this.lists.id[i] = this.tasks[i];
+        }
+      }
+
+    }
+    catch(exception){
+      console.log("Erro ao afiliar Tarefas");
+    }
   }   
 
   drop(event: CdkDragDrop<string[]>) {
