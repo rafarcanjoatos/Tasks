@@ -1,3 +1,4 @@
+<div cdkDropListGroup>
 <div cdkDropList [cdkDropListData]="lists" class="container" (cdkDropListDropped)="drop($event)">
     <div class="task-box" *ngFor="let name of lists; let i = index" cdkDrag>   
         <div class="border-box">
@@ -13,4 +14,5 @@
         </div>
         </div>
     </div>
+</div>
 </div>

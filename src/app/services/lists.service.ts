@@ -36,7 +36,7 @@ export class ListsService {
   }
 
   getById(id: number): Observable<Lists> {
-    const url = `${this.baseUrl}/lists/${id}`;
+    const url = `${this.baseUrl}/${id}`;
     return this.http.get<Lists>(url).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
@@ -44,7 +44,7 @@ export class ListsService {
   }
 
   update(lists: Lists): Observable<Lists> {
-    const url = `${this.baseUrl}/lists/${lists.id}`;
+    const url = `${this.baseUrl}/${lists.id}`;
     return this.http.put<Lists>(url, lists).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
@@ -52,7 +52,7 @@ export class ListsService {
   }
 
   delete(id: number): Observable<Lists> {
-    const url = `${this.baseUrl}/lists/${id}`;
+    const url = `${this.baseUrl}/${id}`;
     return this.http.delete<Lists>(url).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))

@@ -1,6 +1,6 @@
 import { ListsService } from '../../services/lists.service';
 import { TasksService } from '../../services/tasks.service';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, CdkDropList, CdkDropListGroup, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component } from '@angular/core';
 
 @Component({
@@ -23,7 +23,6 @@ export class ListsReadComponent {
     try{
       this.listsService.getLists().subscribe((lists) => {
         this.lists = lists;
-        //console.log(lists);
         return this.lists;
       });
     }
@@ -37,31 +36,33 @@ export class ListsReadComponent {
         this.tasks = tasks;
         //console.log(tasks);
 
-        // // Afilliate Tasks in Lists
-        // try{    
-        //   for (let i in this.tasks){            
-        //     console.log("----- Entrou no Contador");
-        //     for (let idTask of this.tasks){
-        //       console.log("---------- Entrou no For");
-        //       //console.log(i);
-        //       //console.log(idTask.listId);
+        // Afilliate Tasks in Lists
+        try{    
+          for (let i in this.lists){
+            for (let idList of this.lists){             
+              for (let idTask of this.tasks){
+                //console.log("---------- Entrou no For Tasks");
+                //console.log(idList.id);
+                //console.log(idTask.listId);
 
-        //       if(i == idTask.listId){
-        //         console.log("--------------- Entrou no if");
-        //         console.log(idTask.title);
-        //         console.log(this.lists[i]);
+                if(idList.id == idTask.listId){
+                  //console.log("--------------- Entrou no if");
+                  //console.log(idTask.title);
+                  //console.log(idList.title);
+                                    
+                  //this.tasks[i].push(idTask);
+                  //console.log(idList.id);
+                  //console.log(this.tasks[i]);
+                  //console.log("4 - Afiliou");
+                }
 
-        //         this.lists[i].concat(idTask);
-        //         console.log(this.lists[i]);
-        //         // console.log("4 - Afiliou");
-        //       }
-
-        //       }
-        //   }
-        // }
-        // catch(exception){
-        //   console.log("Erro ao afiliar Tarefas");
-        // }  
+              }
+            }
+          }
+        }
+        catch(exception){
+          console.log("Erro ao afiliar Tarefas");
+        }  
 
         return this.tasks;
       });
@@ -76,6 +77,24 @@ export class ListsReadComponent {
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      
+      try{
+        console.log("updating listas", event.currentIndex);
+        console.log("lista", this.lists[event.currentIndex]);
+        console.log("id", this.lists.title);
+
+        //this.lists.id = event.currentIndex;
+        console.log(this.lists);
+        
+          this.listsService.update(this.lists).subscribe((lists) => {
+            this.lists = lists;
+            return this.lists;
+          });
+        }
+        catch (exception){
+            console.log("Erro ao update Listas");
+        }
+
     } else {
       transferArrayItem(
         event.previousContainer.data,

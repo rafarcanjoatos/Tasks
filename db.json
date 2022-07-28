@@ -1,37 +1,125 @@
 {
-    "lists": [{
-        "id": 0,
-        "title": "Mercado"
-    },{
+  "lists": [
+    {
+      "0": {
+        "0": {
+          "id": 1,
+          "title": "Trabalho"
+        },
+        "1": {
+          "id": 2,
+          "title": "Escritório"
+        },
+        "2": {
+          "id": 0,
+          "title": "Mercado"
+        },
+        "id": 2
+      },
+      "1": {
+        "0": {
+          "id": 1,
+          "title": "Trabalho"
+        },
+        "1": {
+          "0": {
+            "0": {
+              "id": 1,
+              "title": "Trabalho"
+            },
+            "1": {
+              "id": 2,
+              "title": "Escritório"
+            },
+            "2": {
+              "id": 0,
+              "title": "Mercado"
+            },
+            "id": 2
+          },
+          "1": {
+            "id": 0,
+            "title": "Mercado"
+          },
+          "2": {
+            "id": 1,
+            "title": "Trabalho"
+          },
+          "id": 0
+        },
+        "2": {
+          "0": {
+            "id": 1,
+            "title": "Trabalho"
+          },
+          "1": {
+            "id": 2,
+            "title": "Escritório"
+          },
+          "2": {
+            "id": 0,
+            "title": "Mercado"
+          },
+          "id": 2
+        },
+        "id": 0
+      },
+      "2": {
         "id": 1,
         "title": "Trabalho"
-    },{
-        "id": 2,
-        "title": "Casa"
-    }],
-    "tasks": [{
-        "id": 0,
-        "listId": 0,
-        "title": "Comprar arroz"
-    }, { 
+      },
+      "id": 0
+    },
+    {
+      "id": 1,
+      "title": "Trabalho"
+    },
+    {
+      "0": {
         "id": 1,
-        "listId": 0,
-        "title": "Comprar feijão"
-    }, { 
+        "title": "Trabalho"
+      },
+      "1": {
         "id": 2,
-        "listId": 1,
-        "title": "Reunião às 10:00"
-    }, { 
-        "id": 3,
-        "listId": 1,
-        "title": "Reunião às 14:00"
-    }, { 
-        "id": 4,
-        "listId": 2,
-        "title": "Faxina"
-    }, { 
-        "id": 5,
-        "listId": 2,
-        "title": "Almoço"
-    }]
-  }
+        "title": "Escritório"
+      },
+      "2": {
+        "id": 0,
+        "title": "Mercado"
+      },
+      "id": 2
+    }
+  ],
+  "tasks": [
+    {
+      "id": 0,
+      "listId": 0,
+      "title": "Comprar arroz"
+    },
+    {
+      "id": 1,
+      "listId": 0,
+      "title": "Comprar feijão"
+    },
+    {
+      "id": 2,
+      "listId": 1,
+      "title": "Reunião às 10:00"
+    },
+    {
+      "id": 3,
+      "listId": 1,
+      "title": "Reunião às 14:00"
+    },
+    {
+      "id": 4,
+      "listId": 2,
+      "title": "Faxina"
+    },
+    {
+      "id": 5,
+      "listId": 2,
+      "title": "Almoço"
+    }
+  ]
+}
