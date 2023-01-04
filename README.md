@@ -2,4 +2,4 @@
 Desafio Front End Totvs - 2022
 
 
-- Angular
+Aplicativo de gestão de tarefas desenvolvido em Angular.
